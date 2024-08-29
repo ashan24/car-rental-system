@@ -46,20 +46,23 @@ def admin(cursor):
         carmodel.edit_car(id=id,cursor=cursor)
 
     elif(choose ==4):
-       table = user.check_status(cursor,select = 1)
-       if table == 'NO Data':
+       car_rent = rent()
+       table = car_rent.check_status(cursor,select=1)
+       if table == 'No Data':
           print("\t\t**There are no any car rent to approve.**\n")
        else:
             print(table)
             id = input("choose rent_id to approve:")
             car_rent = rent(rent_id=id)
             car_rent.approve_car_rent(cursor)
+
     # Deleting the renting record of car 
     elif choose == 5:
-        table = user.check_status(cursor,select = 2)
-        if table == 'NO Data':
+       car_rent = rent()
+       table = car_rent.check_status(cursor,select=2)
+       if table == 'No Data':
           print("\t\t**There are no any car rent to delete.**\n")
-        else:
+       else:
             print(table)
             id = input("choose rent_id to delete:")
             car_rent = rent(rent_id=id)

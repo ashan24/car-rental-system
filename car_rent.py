@@ -43,7 +43,7 @@ class rent:
                 cursor.execute(query,id)
             rent_data = cursor.fetchall()
             if not rent_data:
-                    return '\t\t**You havenot rented any car**'
+                    return 'No Data'
             else:
                 table = PrettyTable(['Rent_id','user_ID', 'car name','model','days','status','Amount'])
                 for data in rent_data:

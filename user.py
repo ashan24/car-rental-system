@@ -32,7 +32,10 @@ def user(cursor,id):
         elif(choose == 3):
             car_rent = car(user_id = id)
             table = car_rent.check_status(cursor,select=3)
-            print(table)
+            if table == "No Data":
+                print("\t\t**You have not rented any car**")
+            else:
+                print(table)
 
         # breaking from while loop
         elif(choose == 4):
