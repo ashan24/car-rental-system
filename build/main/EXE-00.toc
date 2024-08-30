@@ -62,7 +62,7 @@
  [],
  False,
  False,
- 1724906258,
+ 1725010983,
  [('run.exe',
    'D:\\msc-python\\car rental '
    'system\\.venv\\lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit-intel\\run.exe',
