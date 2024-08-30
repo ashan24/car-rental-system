@@ -5,12 +5,11 @@ def database_connection():
          host = "Localhost",
          user = "root",
          password = "",
-         # database = "car_rental_system",
          autocommit = True
          )
       if mydb.is_connected():
          cursor = mydb.cursor()
-         database_name = 'new_system'
+         database_name = 'car_rental_system_Ashan'
          db_name = [(database_name)]
          query = ("show DATABASES like %s") 
          cursor.execute(query,db_name) 
@@ -19,6 +18,7 @@ def database_connection():
             cursor.close()
             mydb.database = database_name
             return mydb
+         # Creates database if there is no database called car rental system. also call function create tables to create tables in new database.
          else:
             cursor.execute(f"CREATE DATABASE {database_name}")
             print("Database created")
@@ -30,7 +30,7 @@ def database_connection():
          print(e)
          return "error"
  
-
+# This runs only first time. it creates 3 table and insert admin credentials in users table.
 def create_tables(cursor):
   query1 = """
                      CREATE TABLE `car` (

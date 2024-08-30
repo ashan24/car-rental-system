@@ -15,26 +15,33 @@ class car:
 
     # Add_car function to add car
     def add_car(self,cursor):   
-        value = [self.make,self.model,self.year,self.mileage,self.available_now,self.minimum_rent_period,self.maximum_rent_period,self.price_per_hour]
+        value = [self.make,self.model,self.year,self.mileage,self.available_now,self.minimum_rent_period,self.maximum_rent_period,self.price_per_day]
         query = ("insert into car(make,model,year,mileage,available_now,minimum_rent_period,maximum_rent_period,price) Values(%s,%s,%s,%s,%s,%s,%s,%s)")
         cursor.execute(query,value)
-        print("Car added succesfully")
+        print("\t\tCar added succesfully")
 
 
     # Del_car function to delete car
     def del_car(self,cursor):
-        value = [self.make, self.model]
-        query = "Delete from car where make = %s && model = %s"
-        cursor.execute(query,value)
-        print("Car Deleted successfully")
-
+        query1 = "Select * from car where make = %s && model = %s"
+        val = [self.make,self.model]
+        cursor.execute(query1,val)
+        check = cursor.fetchone()
+        if not check:
+            print("\n\t\t**Enter correct car name or model.**\n")
+            
+        else:
+            query = "Delete from car where make = %s && model = %s"
+            cursor.execute(query,val)
+            print("\t\t**Car Deleted successfully**\n")
 
     # Edit_car function to edit car details
     def edit_car(self,id,cursor):
-        value = [self.make,self.model,self.year,self.mileage,self.available_now,self.minimum_rent_period,self.maximum_rent_period,self.price_per_hour,id]
+        value = [self.make,self.model,self.year,self.mileage,self.available_now,self.minimum_rent_period,self.maximum_rent_period,self.price_per_day,id]
         query = ("Update car SET make = %s,model= %s,year= %s,mileage= %s,available_now= %s,minimum_rent_period= %s,maximum_rent_period= %s,price= %s where sn = %s")
         cursor.execute(query,value)
-        print("car value updated.")
+        print("\t\t**car value updated.**")
+        
 
 
     # show_car function to show all the list of car for admin and available cars to users. id = 1 is being passed from admin and id = 2 is being passed from user.

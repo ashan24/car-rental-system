@@ -30,7 +30,7 @@ def user(cursor,id):
         
         # Checking the status of car
         elif(choose == 3):
-            car_rent = car(user_id = id)
+            car_rent = rent(user_id = id)
             table = car_rent.check_status(cursor,select=3)
             if table == "No Data":
                 print("\t\t**You have not rented any car**")
@@ -46,26 +46,3 @@ def user(cursor,id):
             print("\n\t**Please choose right option**\n")
 
 
-# checking status of car both by user and admin
-# def check_status(cursor,select,id = 'null'):
-#         try:
-#             if (select == 1):
-#                query = "Select * from car_rent where status = 'not approved'" 
-#                cursor.execute(query) 
-#             elif(select == 2):
-#                 query = "Select * from car_rent" 
-#                 cursor.execute(query) 
-#             else:
-#                 query = "Select * from car_rent WHERE user_id = %s"
-#                 id = [(id)]
-#                 cursor.execute(query,id)
-#             rent_data = cursor.fetchall()
-#             if not rent_data:
-#                     return '\t\t**You havenot rented any car**'
-#             else:
-#                 table = PrettyTable(['Rent_id','user_ID', 'car name','model','days','status','Amount'])
-#                 for data in rent_data:
-#                     table.add_row([data[0],data[1],data[2], data[3],data[4],data[5],data[6]])
-#                 return table
-#         except Exception as error:
-#              print(error)
